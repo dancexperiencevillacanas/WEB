@@ -194,49 +194,77 @@ section h2 {
 }
 
 
-/* ✅ RESPONSIVE: móviles */
+/* ✅ RESPONSIVE: móviles - TODO EN 1 PANTALLA (sin scroll) */
 @media (max-width: 768px) {
 
-  /* Evita cualquier desbordamiento lateral */
+  /* 1) Bloquea scroll y fija altura a pantalla real (svh es clave en móvil) */
   html, body {
-    overflow-x: hidden;
+    height: 100%;
+    overflow: hidden;     /* no scroll vertical ni horizontal */
   }
 
-  /* Banner un poco más bajo en móvil */
+  body {
+    min-height: 100svh;   /* altura visible real en móvil */
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* 2) El banner ocupa la parte superior */
   .banner {
-    height: 65vh;              /* antes 80vh */
+    flex: 1 1 auto;       /* se adapta al espacio restante */
+    height: auto;         /* no fuerces 65vh */
+    min-height: 0;        /* importante para que flex no desborde */
+    position: relative;
+    overflow: hidden;
     background-position: bottom;
+    display: flex;
+    justify-content: center;  /* centra horizontalmente el logo */
+    align-items: flex-start;  /* logo arriba */
+    padding-top: 18px;        /* baja un poco el logo sin margin raro */
   }
 
-  /* Logo: más grande y más abajo (sin margin negativo) */
-  
-.logo{
-  width: 70%;
-  margin-top: 190px;
-}
+  /* 3) Logo: más pequeño para que quepa todo sin scroll */
+  .logo {
+    width: min(62vw, 260px);  /* tamaño responsivo */
+    margin: 0;
+    display: block;
+  }
 
-  /* La sección era la que generaba el scroll horizontal */
+  /* 4) Sección de botones: pegada abajo y compacta */
   section {
-    padding: 40px 16px;        /* antes 90px 210px */
+    flex: 0 0 auto;
+    padding: 10px 12px;
+    background-color: transparent; /* para que se vea el fondo */
+    margin: 0;
   }
 
-  /* Botones: en columna y a ancho cómodo */
   .botones {
-    flex-direction: column;    /* en móvil mejor columna */
-    gap: 16px;
-    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2x2 para ocupar menos alto */
+    gap: 10px;
+    justify-items: center;
+    align-items: center;
+    margin: 0;
   }
 
+  /* 5) Botones más bajos para que entren */
   .botones .btn {
-    width: min(320px, 92vw);   /* se adapta a pantalla */
-    height: 70px;              /* un poquito menos */
-    font-size: 20px;
+    width: 44vw;                 /* dos por fila */
+    max-width: 190px;
+    height: 56px;
+    font-size: 16px;
+    white-space: nowrap;
   }
 
-  /* Ajuste opcional: nube padding para que no se desborde */
+  /* 6) Nubes: reduce padding y “bultos” para que no ocupen demasiado */
   .nube, .nube2 {
-    width: auto;               /* en vez de width:200px fijo */
-    padding: 18px 28px;
-    font-size: 22px;
+    padding: 12px 16px;
+    font-size: 18px;
+    border-radius: 40px;
+  }
+
+  .nube::before, .nube2::before {
+    transform: scale(0.75);   /* reduce la forma de nube */
+    top: -16px;
   }
 }

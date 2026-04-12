@@ -193,78 +193,74 @@ section h2 {
   margin-bottom: 20px;
 }
 
-
-/* ✅ RESPONSIVE: móviles - TODO EN 1 PANTALLA (sin scroll) */
 @media (max-width: 768px) {
 
-  /* 1) Bloquea scroll y fija altura a pantalla real (svh es clave en móvil) */
+  /* Bloqueo total de scroll en móvil */
   html, body {
     height: 100%;
-    overflow: hidden;     /* no scroll vertical ni horizontal */
+    margin: 0;
+    padding: 0;
+    overflow: hidden !important;
+    overscroll-behavior: none;
+    touch-action: pan-x; /* evita scroll vertical por gesto */
   }
 
   body {
-    min-height: 100svh;   /* altura visible real en móvil */
+    height: 100svh; /* altura visible real */
+    min-height: 100svh;
     display: flex;
     flex-direction: column;
   }
 
-  /* 2) El banner ocupa la parte superior */
+  /* Banner arriba, sección abajo, todo dentro de 100svh */
   .banner {
-    flex: 1 1 auto;       /* se adapta al espacio restante */
-    height: auto;         /* no fuerces 65vh */
-    min-height: 0;        /* importante para que flex no desborde */
-    position: relative;
+    flex: 1 1 auto;
+    min-height: 0;
     overflow: hidden;
-    background-position: bottom;
     display: flex;
-    justify-content: center;  /* centra horizontalmente el logo */
-    align-items: flex-start;  /* logo arriba */
-    padding-top: 18px;        /* baja un poco el logo sin margin raro */
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 18px;
+    height: auto; /* quita el 80vh/65vh */
   }
 
-  /* 3) Logo: más pequeño para que quepa todo sin scroll */
   .logo {
-    width: min(62vw, 260px);  /* tamaño responsivo */
-    margin: 0;
+    width: min(60vw, 240px);
+    margin: 0 !important; /* MUY IMPORTANTE: anula margin-top */
     display: block;
   }
 
-  /* 4) Sección de botones: pegada abajo y compacta */
   section {
     flex: 0 0 auto;
     padding: 10px 12px;
-    background-color: transparent; /* para que se vea el fondo */
     margin: 0;
+    background: transparent;
   }
 
+  /* Para que quepan 4 botones sin crecer en altura */
   .botones {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* 2x2 para ocupar menos alto */
+    grid-template-columns: 1fr 1fr;
     gap: 10px;
-    justify-items: center;
-    align-items: center;
     margin: 0;
+    padding: 0;
   }
 
-  /* 5) Botones más bajos para que entren */
   .botones .btn {
-    width: 44vw;                 /* dos por fila */
+    width: 44vw;
     max-width: 190px;
-    height: 56px;
+    height: 54px;
     font-size: 16px;
-    white-space: nowrap;
   }
 
-  /* 6) Nubes: reduce padding y “bultos” para que no ocupen demasiado */
   .nube, .nube2 {
     padding: 12px 16px;
     font-size: 18px;
-    border-radius: 40px;
   }
 
   .nube::before, .nube2::before {
-    transform: scale(0.75);   /* reduce la forma de nube */
+    transform: scale(0.75);
     top: -16px;
   }
 }
+

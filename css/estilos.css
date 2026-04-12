@@ -1,3 +1,16 @@
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden; /* evita scroll horizontal */
+}
+
+
 body{
   margin:0;
   font-family:Arial, sans-serif;
@@ -180,3 +193,51 @@ section h2 {
   margin-bottom: 20px;
 }
 
+
+/* ✅ RESPONSIVE: móviles */
+@media (max-width: 768px) {
+
+  /* Evita cualquier desbordamiento lateral */
+  html, body {
+    overflow-x: hidden;
+  }
+
+  /* Banner un poco más bajo en móvil */
+  .banner {
+    height: 65vh;              /* antes 80vh */
+    background-position: bottom;
+  }
+
+  /* Logo: más grande y más abajo (sin margin negativo) */
+  
+.logo{
+  width: 40%;
+  margin-top: -80px;
+}
+
+
+  /* La sección era la que generaba el scroll horizontal */
+  section {
+    padding: 40px 16px;        /* antes 90px 210px */
+  }
+
+  /* Botones: en columna y a ancho cómodo */
+  .botones {
+    flex-direction: column;    /* en móvil mejor columna */
+    gap: 16px;
+    padding: 0;
+  }
+
+  .botones .btn {
+    width: min(320px, 92vw);   /* se adapta a pantalla */
+    height: 70px;              /* un poquito menos */
+    font-size: 20px;
+  }
+
+  /* Ajuste opcional: nube padding para que no se desborde */
+  .nube, .nube2 {
+    width: auto;               /* en vez de width:200px fijo */
+    padding: 18px 28px;
+    font-size: 22px;
+  }
+}

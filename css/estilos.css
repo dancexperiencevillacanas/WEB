@@ -115,9 +115,10 @@ header{
   box-shadow:0 5px 10px rgba(0,0,0,0.25);
   transition:0.3s;
 }
+
 .folleto {
-  width: 100px;      /* controla lo estrecha que es */
-  max-width: 90%;    /* evita que se salga en móviles */
+  width: 100px;      
+  max-width: 90%;    
   height: auto;      
   display: block;
   margin: 0 auto;    

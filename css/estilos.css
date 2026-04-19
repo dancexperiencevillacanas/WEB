@@ -246,12 +246,14 @@ section h2 {
 
   /* Para que quepan 4 botones sin crecer en altura */
   .botones {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin: 15px;
-    padding: 15px;
-  }
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 10px; /* separación izquierda / derecha */
+  row-gap: 30px;    /* separación arriba / abajo */
+  margin: 15px;
+  padding: 15px;
+}
+
 
   .botones .btn {
     width: 77vw;

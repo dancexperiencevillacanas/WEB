@@ -232,7 +232,7 @@ section h2 {
   }
 
   .logo {
-    width: min(80vw, 540px);
+    width: min(90vw, 640px);
     margin: 0 !important; /* MUY IMPORTANTE: anula margin-top */
     display: block;
   }

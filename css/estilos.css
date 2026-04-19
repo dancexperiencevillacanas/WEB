@@ -250,7 +250,7 @@ section h2 {
     grid-template-columns: 1fr 1fr;
     gap: 10px;
     margin: 0;
-    padding: 0;
+    padding: 15px;
   }
 
   .botones .btn {

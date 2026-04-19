@@ -260,10 +260,38 @@ section h2 {
     font-size: 18px;
   }
   
-.nube, .nube2 {
+/* Forma normal del botón (sin nube) incluso si hay estilos en PC */
+  .nube, .nube2,
+  .nube:hover, .nube2:hover,
+  .nube:active, .nube2:active,
+  .nube:focus, .nube2:focus,
+  .nube:focus-visible, .nube2:focus-visible {
+    border-radius: 12px !important; /* pon 0 si lo quieres cuadrado */
+    overflow: hidden !important;    /* evita que sobresalgan “bultos” */
+  }
+
+/* Eliminar bultos de nube (pseudoelementos) en todos los estados */
+  .nube::before, .nube::after,
+  .nube2::before, .nube2::after,
+  .nube:hover::before, .nube:hover::after,
+  .nube2:hover::before, .nube2:hover::after,
+  .nube:active::before, .nube:active::after,
+  .nube2:active::before, .nube2:active::after,
+  .nube:focus::before, .nube:focus::after,
+  .nube2:focus::before, .nube2:focus::after,
+  .nube:focus-visible::before, .nube:focus-visible::after,
+  .nube2:focus-visible::before, .nube2:focus-visible::after {
+    content: none !important;
+    display: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    transform: none !important;
+  }
+
+  /* Mantén tus tamaños en móvil */
+  .nube, .nube2 {
     padding: 12px 16px;
     font-size: 18px;
-
   }
 }
 

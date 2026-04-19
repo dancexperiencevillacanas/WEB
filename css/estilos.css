@@ -259,5 +259,24 @@ section h2 {
     height: 60px;
     font-size: 18px;
   }
+
+.nube, .nube2 {
+    padding: 12px 16px;
+    font-size: 18px;
+
+    border-radius: 12px !important; /* <- cambia a 8px/16px si quieres */
+    overflow: hidden !important;    /* por si antes sobresalían "bultos" */
+    position: relative;             /* no molesta, pero lo dejamos */
+  }
+
+  /* Desactivar los "bultos" de la nube (pseudoelementos) */
+  .nube::before,
+  .nube::after,
+  .nube2::before,
+  .nube2::after {
+    content: none !important;
+    display: none !important;
+  }
+
 }
 

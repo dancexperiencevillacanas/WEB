@@ -249,7 +249,7 @@ section h2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
-    margin: 0;
+    margin: 15px;
     padding: 15px;
   }
 

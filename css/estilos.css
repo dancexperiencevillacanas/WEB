@@ -258,6 +258,7 @@ section h2 {
     max-width: 177px;
     height: 60px;
     font-size: 18px;
+    color: black;
   }
   
 /* Forma normal del botón (sin nube) incluso si hay estilos en PC */
